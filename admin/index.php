@@ -609,6 +609,8 @@ if (isset($_GET['act'])) {
 
         case 'updatetintuc':
 
+            // check
+
             
 
             if (isset($_POST['capnhat']) && $_POST['capnhat']) {
