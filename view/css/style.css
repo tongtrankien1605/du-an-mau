@@ -23,11 +23,6 @@
 
 }
 
-.mb30 {
-    margin-bottom: 30px;
-
-}
-
 .mr {
     margin-right: 2%;
 }
@@ -101,16 +96,6 @@
     padding: 20px;
 }
 
-.boxcontent3 {
-    border-left: 1px #ccc solid;
-    border-right: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-height: 80px;
-    padding: 20px;
-}
-
 .boxcontent2 {
     border-left: 1px #ccc solid;
     border-right: 1px #ccc solid;
@@ -164,13 +149,12 @@
 }
 
 .boxsp .info p {
-    color: rgb(0, 208, 255);
-    font-size: 18px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-size: 16px;
 }
 
 .boxsp .info a {
     font-size: 14px;
+    color: blue;
 }
 
 
@@ -209,7 +193,6 @@
 .formtaikhoan {
     line-height: 150%;
 }
-
 
 .formtaikhoan input[type="text"],
 .formtaikhoan input[type="email"],
@@ -355,10 +338,6 @@
 
 .formcontent {
     padding: 20px 0px;
-}
-
-.formcontent1 {
-    padding: 20px 20px;
 }
 
 .formdsloai table {
@@ -549,7 +528,7 @@ td {
 }
 
 /*  box right */
-.billform input[type="text"],
+
 .searbox input[type="text"]{
     width: 100%;
     padding: 5px 10px;
@@ -574,61 +553,6 @@ td {
     background-color: #ccc;
     cursor: pointer;
    
-}
-
-.thoatadmin{
-    border-radius: 5px;
-}
-
-.thoatadmin:hover{
-    background-color: #ccc;
-    cursor: pointer;
-    text-overflow: clip;
-}
-
-.img1{
-    object-fit: cover;
-}
-
-/*  bill */
-
-/* .billform table tr td{
-    width: 100%;
-    
-}
-
-.billform table tr td:nth-child(1){
-    width: 10%;
-    
-} */
-
-.billform table tr td:nth-child(2){
-    width: 90%;
-    
-}
-
-.billform1 table{
-    width: 100%;
 
 }
 
-.billform1 tr td{
-    padding-top: 18px;
-
-}
-
-.thank{
-    min-height: 80px;
-}
-
-
-.infobill li{
-    text-align: center;
-    list-style: none;
-    padding-top: 20px;
-}
-
-table tr th{
-    background-color: #b9afaf;
-    
-}

@@ -30,8 +30,8 @@
                     <tr>
                         <th></th>
                         <th>Tên sản phẩm</th>
+                   
                         <th>Hình</th>
-                        <th>Danh mục</th>
                         <th>Giá</th>
                         <th>Mô tả</th>
                         <th>Lượt xem</th>
@@ -57,15 +57,12 @@
                                 <td><input type="checkbox" name="" id=""></td>
                                 <td>' .$name. '</td>   
                                 <td>' .$hinh. '</td>                              
-                                <td>' .$namedm. '</td>                              
                                 <td>' .$price. '</td>                              
                                 <td>' .$mota. '</td>
                                 <td>' .$luotxem. '</td>
                                 <td>
                                 <a href="' . $suasp . '"><input type="button" value="Sửa"></a>  
-                                <a  onclick="return confirm(\'Bạn có chắc chắn muốn xóa ?\')" href="' . $xoasp . '"><input type="button" value="Xóa"></a>    
-                                
-                                
+                                <a href="' . $xoasp . '"><input type="button" value="Xóa"></a>                                  
                                     
                                 </td>
                             </tr>

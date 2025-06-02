@@ -15,14 +15,6 @@
                         </div>
 
                         <div class="row mb10">
-
-                            <?php   if(isset($_SESSION['user'])){ ?>
-                            <li>
-                                <a href="index.php?act=mybill">Đơn hàng của tôi</a>
-                            </li>
-                            <?php } ?>
-
-
                             <li>
                                 <a href="index.php?act=quenmk">Quên mật khẩu</a>
                             </li>

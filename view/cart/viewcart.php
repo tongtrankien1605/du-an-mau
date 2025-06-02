@@ -7,18 +7,42 @@
             <div class="boxtitle">GIỎ HÀNG</div>
             <div class="row boxcontent cart">
                 <table border="1" style="width=100%">
-                    <!-- <tr>
-                        <th>STT</th>
+                    <tr>
                         <th>Hình</th>
                         <th>Sản phẩm</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
                         <th>Thành tiền</th>
                         <th>Thao tác</th>
-                    </tr> -->
+                    </tr>
 
                     <?php 
-                        viewcart(1);
+                        $tong = 0;
+                        $i = 0;
+                        foreach ($_SESSION['mycart'] as $cart) {
+                        $hinh = $img_path.$cart[2];
+                        $thanhtien = $cart[3] * $cart[4];
+                        $tong += $thanhtien;
+                        $xoasp = '<a href="index.php?act=delcart&idcart='.$i.'"><input type="button" value="Xóa"></a>';
+                        echo '
+                            <tr>
+                                <td><img src="'.$hinh.'" alt="" height="200px" width="300px"></td>
+                                <td>'.$cart[1].'</td>
+                                <td>'.$cart[3].'</td>
+                                <td>'.$cart[4].'</td>
+                                <td>'.$thanhtien.'</td>
+                                <td>'.$xoasp.'</td>
+                            </tr>';
+                            $i += 1;
+                            // update_luotxem($luotxemnew, $id);
+                        } 
+                        echo '<tr>
+                                <td colspan="4">Tổng đơn hàng</td>
+                                
+                                <td>'.$tong.'</td>
+                                
+                                <td></td>
+                            </tr>';
                     
                     
                     ?>
@@ -50,15 +74,10 @@
 
 
         <div class="row mb bill">
+            <input type="submit" value="Đồng ý đặt hàng"><a href="index.php?act=delcart"><input type="button" value="Xóa giỏ hàng"></a>
+            <!-- <input type="button" value=""> -->
 
-            <!-- <input type="submit" value="Đồng ý đặt hàng"><a href="index.php?act=delcart"><input type="button" value="Xóa giỏ hàng"></a> -->
-
-            <a href="index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>
-
-            <a href="index.php?act=delcart"><input type="button" value="XÓA GIỎ HÀNG"></a>
-
-            <a href="index.php"><input type="button" value="ĐẶT THÊM"></a>
-
+            <a href="index.php"><input type="button" value="Mua thêm hàng xóa"></a>
         </div>
 
     </div>

@@ -7,36 +7,23 @@
 
                     <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
-                        <div class="numbertext">1 / 5</div>
+                        <div class="numbertext">1 / 3</div>
                         <img src="view/images/banner1.jpg" style="width:100%">
                         <div class="text">Picture 1</div>
                     </div>
 
                     <div class="mySlides fade">
-                        <div class="numbertext">2 / 5</div>
+                        <div class="numbertext">2 / 3</div>
                         <img src="view/images/banner2.jpg" style="width:100%">
                         <div class="text">Picture 2</div>
                     </div>
 
                     <div class="mySlides fade">
-                        <div class="numbertext">3 / 5</div>
+                        <div class="numbertext">3 / 3</div>
                         <img src="view/images/banner3.jpg" style="width:100%">
                         <div class="text">Picture 3</div>
                     </div>
 
-                    <div class="mySlides fade">
-                        <div class="numbertext">4 / 5</div>
-                        <img src="view/images/banner4.jpg" style="width:100%">
-                        <div class="text">Picture 4</div>
-                    </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">5 / 5</div>
-                        <img src="view/images/banner5.jpg" style="width:100%">
-                        <div class="text">Picture 5</div>
-                    </div>
-
-                    
                     <!-- Next and previous buttons -->
                     <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
@@ -89,9 +76,8 @@
                             <a href="'.$linksp.'"><img src="' . $hinh . '" alt="" height="250px"></a>
                         </div>
                         <div class="row info">
-                            <a class="aspnew" href="'.$linksp.'">' . $name . '</a>
                             <p>$ '.$price.'</p>
-                            
+                            <a class="aspnew" href="'.$linksp.'">' . $name . '</a>
                         </div>
 
                         <div class="row btnaddtocart">

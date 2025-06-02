@@ -14,7 +14,7 @@ function delete_sanpham($id)
 
 function loadall_sanpham($kyw = "", $iddm = 0)
 {
-    $sql = "SELECT sp.*, dm.namedm FROM sanpham as sp join danhmuc as dm on sp.iddm = dm.id where 1";
+    $sql = "SELECT * FROM sanpham where 1";
     if ($kyw != '') {
         $sql .= " and name like '%" . $kyw . "%'";
     }
@@ -77,26 +77,14 @@ function load_sanpham_cungloai($id, $iddm)
     return $listsanpham;
 }
 
-function update_sanpham($id, $tensp, $giasp, $hinh, $mota, $iddm)
+function update_sanpham($id1, $tensp, $giasp, $hinhanh, $mota, $iddm)
 {
 
 
+    // $sql = "UPDATE sanpham SET name = '{$tensp}', iddm = '{$iddm}', price = '{$giasp}', img = '{$hinhanh}', mota = '{$mota}' where id = " . $id1;
 
-    // $sql = "UPDATE sanpham SET name = '{$tensp}', price = '{$giasp}', img = '{$hinh}' , mota = '{$mota}', iddm = '{$iddm}' WHERE id = $id";
+    $sql = "UPDATE sanpham SET name = '{$tensp}', iddm = '{$iddm}', price = '{$giasp}', img = '{$hinhanh}', mota = '{$mota}' WHERE id = $id1";
 
-    // pdo_execute($sql);
-
-
-    if ($hinh != "") {
-
-        $sql = "UPDATE sanpham SET name = '{$tensp}', price = '{$giasp}', img = '{$hinh}' , mota = '{$mota}', iddm = '{$iddm}' WHERE id = $id";
-        
-    } else {
-
-        $sql = "UPDATE sanpham SET name = '{$tensp}', price = '{$giasp}', mota = '{$mota}', iddm = '{$iddm}' WHERE id = $id";
-
-    }
-    
     pdo_execute($sql);
 }
 
@@ -107,10 +95,6 @@ function update_luotxem($luotxemnew, $id)
     
     $sql = "UPDATE sanpham SET luotxem = '$luotxemnew' where id = " . $id;
     pdo_execute($sql);
-
-
-
-    
 }
 
 

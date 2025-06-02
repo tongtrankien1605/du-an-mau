@@ -12,7 +12,7 @@
                         <th></th>
                         <th>MÃ TÀI KHOẢN</th>
                         <th>TÊN ĐĂNG NHẬP</th>
-                        <th>MẬT KHẨU</th>
+                        <!-- <th>MẬT KHẨU</th> -->
                         <th>EMAIL</th>
                         <th>ĐỊA CHỈ</th>
                         <th>ĐIỆN THOẠI</th>
@@ -29,7 +29,7 @@
                                 <td><input type="checkbox" name="" id=""></td>
                                 <td>' . $id . '</td>
                                 <td>' . $user . '</td>
-                                <td>********</td>
+                                
                                 <td>' . $email . '</td>
                                 <td>' . $address . '</td>
                                 <td>' . $tel . '</td>

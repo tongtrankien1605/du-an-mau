@@ -5,12 +5,6 @@ include("../model/danhmuc.php");
 include("../model/sanpham.php");
 include("../model/taikhoan.php");
 include("../model/binhluan.php");
-include("../model/tintuc.php");
-include("../model/cart.php");
-
-session_start();
-
-if(isset($_SESSION['user']))
 
 
 
@@ -74,144 +68,6 @@ if (isset($_GET['act'])) {
 
             break;
 
-            // support controller tin tức
-
-        case 'addtintuc1':   
-
-            $errTieuDe = "";
-            $errNoiDung = "";
-            $errHinhAnh = "";
-
-            $tieude = "";
-            $noidung = "";
-            $iddm = "";
-            $filename = "";
-
-
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-
-                $tieude = $_POST['tieu_de'];
-                $noidung = $_POST['noi_dung'];
-                $iddm = $_POST['iddm'];
-
-                $filename = $_FILES['hinh']['name'];
-
-                $isCheck = true;
-
-                if(!$tieude){
-                    $isCheck = false;
-                    $errTieuDe = "Bạn không được để trống tiêu đề";
-                }
-
-                if(!$noidung){
-                    $isCheck = false;
-                    $errNoiDung = "Bạn không được để trống nội dung";
-                }
-
-                if(!$filename){
-                    $isCheck = false;
-                    $errHinhAnh = "Bạn cần thêm hình ảnh";
-                }
-
-                
-
-                
-                $target_dir = "../upload/";
-                $target_file = $target_dir . basename($_FILES['hinh']['name']);
-
-                if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
-                }
-                else{
-                    $target_file = "../upload/nophoto.jpg";
-                }
-
-                if($isCheck == true){
-
-                // insert_tintuc($tieude, $noidung, $target_file, $iddm) ;
-                $thongbao = "Thêm thành công";
-                }
-                
-            }
-            
-    
-            // $listdanhmuctintuc = loadall_danhmuctintuc();
-            
-            include("tintuc/add.php");
-
-            break;
-
-
-        case 'listtintuc1':
-            # code...
-            // $listtintuc = loadall_tintuc();
-            include('tintuc/listtintuc.php');
-            
-
-        
-
-        break;
-
-        case 'suatintuc1':
-
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                // $tintuc = loadone_tintuc($_GET['id']);
-            }
-            // $listdanhmuctintuc = loadall_danhmuctintuc();
-            include ('tintuc/update.php');
-            break;
-    
-        case 'updatetintuc1':
-
-            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
-
-                $id = $_POST['id'];
-                $iddm = $_POST['iddm'];
-
-                $noidung = $_POST['noi_dung'];
-                $tieude = $_POST['tieu_de'];
-
-                $hinh = $_POST['hinh'];
-
-
-                $target_dir = "../upload/";
-                $target_file = $target_dir . $_FILES['hinh']['name'];
-
-                if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
-                    $hinh = $target_file;        
-                }
-                else{
-                    $hinh = "";
-                }
-
-                // update_tintuc($id, $iddm, $noidung, $hinh, $tieude) ;
-
-                
-                $thongbao = "Cập nhật thành công";
-            }
-
-            // $listdanhmuctintuc = loadall_danhmuctintuc();
-            // $listtintuc = loadall_tintuc();
-
-
-            include('tintuc/listtintuc.php');
-
-
-            # code...
-
-            break;
-
-        case 'xoatintuc1':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                // delete_tintuc($_GET['id']);
-            }
-
-            // $listtintuc = loadall_tintuc();
-
-            include('tintuc/listtintuc.php');
-            break;
-
         // controller sản phẩm
 
         case 'addsp':
@@ -222,14 +78,18 @@ if (isset($_GET['act'])) {
                 $tensp = $_POST['tensp'];
                 $giasp = $_POST['giasp'];
                 $mota = $_POST['mota'];
+                // $hinh = $_POST['hinh'];
+                // $img = $_FILES['hinh']['name'];
+
                 
+
 
                 
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES['hinh']['name']);
 
                 if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
+                    // $img = $target_file;
                 }
                 else{
                     $target_file = "../upload/nophoto.jpg";
@@ -270,40 +130,48 @@ if (isset($_GET['act'])) {
             include('sanpham/listsp.php');
             break;
 
-    
-
         case 'suasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $sanpham = loadone_sanpham($_GET['id']);
             }
+
             $listdanhmuc = loadall_danhmuc();
-            include ('sanpham/update.php');
+            include("sanpham/update.php");
+
             break;
 
         case 'updatesp':
 
-            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+            if (isset($_POST['submit']) && $_POST['submit']) {
+                $id1 = $_POST['id'];
 
-                $id = $_POST['id'];
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $giasp = $_POST['giasp'];
                 $mota = $_POST['mota'];
 
-                $hinh = $_POST['hinh'];
+                $hinhanh = $_POST['hinh'];
+
+
+                // $hinh = $_FILES['hinh']['name'];
 
                 $target_dir = "../upload/";
+
+                $target_file = $target_dir . basename($_FILES['hinh']['name']);
+
                 $target_file = $target_dir . $_FILES['hinh']['name'];
+                // $target_file = $target_dir . $hinh;
 
                 if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
-                    $hinh = $target_file;        
+                    // echo 'Upload thành công';
+                    // $hinh = $target_file;
+                    $hinhanh = $target_file;
                 }
                 else{
-                    $hinh = "";
+                    // $target_file = $target_dir.$hinh;
                 }
 
-                update_sanpham($id, $tensp, $giasp, $hinh, $mota, $iddm) ;
+                update_sanpham($id1, $tensp, $giasp, $hinhanh, $mota, $iddm) ;
 
                 
                 $thongbao = "Cập nhật thành công";
@@ -313,14 +181,12 @@ if (isset($_GET['act'])) {
             $listsanpham = loadall_sanpham();
 
 
-            include('sanpham/listsp.php');
+            include("sanpham/listsp.php");
 
 
             # code...
 
             break;
-
-
 
 
         // controller khách hàng
@@ -349,7 +215,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'addtk':
-
+            # code...
             // kiểm tra xem người dùng có nhấn vào nút add hay không
             if (isset($_POST['addtk']) && ($_POST['addtk'])) {
 
@@ -434,231 +300,7 @@ if (isset($_GET['act'])) {
             
             break;
 
-            //  controller bill
-
-        case 'listbill':
-        
-            if(isset($_POST['kyw'])&&($_POST['kyw'] != "")){
-                $kyw = $_POST['kyw'];
-            }else{
-                $kyw = "";
-            }
-            $listbill = loadall_bill($kyw,0);
-
-            include("bill/listbill.php");
-
-            
-            break;
-
-        case 'xoalistbill':
-
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                delete_listbill($_GET['id']);
-            }
-
-            $listbill = loadall_bill();
-        
-            include("bill/listbill.php");
-
-            break;
-
-
-        case 'sualistbill':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $bill = loadone_bill($_GET['id']);
-            }
-
-            include("bill/update.php");
-
-            break;
-
-        case 'updatelistbill':
-
-            if(isset($_POST['capnhat'])&& ($_POST['capnhat'])){
-                $id = $_POST['id'];
-                $ttdh = $_POST['tinhtrangdonhang'];
-
-                update_tinhtrangdonhang($id, $ttdh);
-                $thongbao = "Cập nhật thành công";
-
-
-
-            }
-
-            $listbill = loadall_bill();
-
-    
-            include("bill/listbill.php");
-
-            break;
-
-        
-
-
         //  controller thống kê
-
-        case 'thongke':
-            
-            $listthongke = loadall_thongke();
-            include("thongke/list.php");
-
-            break;
-
-        case 'bieudo':
-        
-            $listthongke = loadall_thongke();
-            include("thongke/bieudo.php");
-
-            break;
-
-        // CONTROLLER TIN TỨC
-
-
-        case 'addtintuc':
-
-            $errTieuDe = "";
-            $errNoiDung = "";
-            $errHinhAnh = "";
-
-            $tieu_de = "";
-            $noi_dung = "";
-            $iddm = "";
-            $filename = "";
-
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-
-                $iddm = $_POST['iddm'];
-                $noi_dung = $_POST['noi_dung'];
-                $tieu_de = $_POST['tieu_de'];
-                $filename = $_FILES['hinh']['name'];
-                
-
-                
-                $target_dir = "../upload/";
-                $target_file = $target_dir . basename($_FILES['hinh']['name']);
-
-                if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
-                }
-                else{
-                    $target_file = "../upload/nophoto.jpg";
-                }
-
-                $isCheck = true;
-
-                if(!$tieu_de){
-                    $errTieuDe = "Bạn không được để trống tiêu đề";
-                    $isCheck = false;
-                }
-                if(!$noi_dung){
-                    $errNoiDung = "Bạn không được để trống nội dung";
-                    $isCheck = false;
-                }
-                if(!$filename){
-                    $errHinhAnh = "Bạn cần upload hình ảnh";
-                    $isCheck = false;
-                }
-
-                if($isCheck == true){
-                    insert_tintuc($noi_dung, $tieu_de, $target_file, $iddm) ;
-                    $thongbao = "Thêm thành công";
-                }
-
-                
-
-                
-            }
-
-            $listdanhmuctintuc = loadall_danhmuctintuc();
-            
-            
-            include("tintuc/add.php");
-
-            break;
-
-        case 'listtintuc':
-            # code...
-           
-            
-
-            $listdanhmuctintuc = loadall_danhmuctintuc();
-            $listtintuc = loadall_tintuc();
-            include('tintuc/listtintuc.php');
-            break;
-            
-        case 'xoatintuc':
-
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                delete_tintuc($_GET['id']);
-                
-            }
-
-            $listtintuc = loadall_tintuc();
-        
-            include("tintuc/listtintuc.php");
-
-            break;
-
-        case 'suatintuc':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $tintuc = loadone_tintuc($_GET['id']);
-            }
-            $listdanhmuctintuc = loadall_danhmuctintuc();
-            include ('tintuc/update.php');
-            break;
-
-        case 'updatetintuc':
-
-            // check
-
-            
-
-            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
-
-                $id = $_POST['id'];
-
-                $noi_dung = $_POST['noi_dung'];
-                $tieu_de = $_POST['tieu_de'];
-                $iddm = $_POST['iddm'];
-
-                $hinh = $_POST['hinh'];
-
-                $target_dir = "../upload/";
-                $target_file = $target_dir . $_FILES['hinh']['name'];
-
-                if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
-                    
-                    $hinh = $target_file;        
-                }
-                else{
-                    $hinh = "";
-                }
-
-
-                
-                
-                update_tintuc($id, $noi_dung, $tieu_de, $iddm, $hinh) ;
-
-                
-                $thongbao = "Cập nhật thành công";
-                
-            }
-
-            $listdanhmuctintuc = loadall_danhmuctintuc();
-            $listtintuc = loadall_tintuc();
-
-
-            include('tintuc/listtintuc.php');
-
-
-            # code...
-
-            break;
-
-        
-
-
-            
 
         default:
 
